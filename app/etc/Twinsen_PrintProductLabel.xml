@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**
+  ~  * Copyright © Elias Kotlyar - All rights reserved.
+  ~  * See LICENSE.md bundled with this module for license details.
+  ~  */
+  -->
+
+<config>
+    <modules>
+        <Twinsen_PrintProductLabel>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Twinsen_PrintProductLabel>
+    </modules>
+</config>

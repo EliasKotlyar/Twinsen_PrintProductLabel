@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <twinsen translate="label" module="twinsen_printproductlabel">
+            <label>Twinsen</label>
+            <sort_order>1000</sort_order>
+        </twinsen>
+    </tabs>
+    <sections>
+        <twinsen_printproductlabel translate="label" module="twinsen_printproductlabel">
+            <label>Print Product Label</label>
+            <tab>twinsen</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Default Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+
+                        <upload translate="label">
+                            <label>Upload Latest</label>
+                            <comment>
+                                <![CDATA[This file gives you a more up-to-date BIN database. Please upload one regularly to stay ahead.]]></comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir>media/printuploads</upload_dir>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </upload>
+
+
+                    </fields>
+                </settings>
+
+            </groups>
+        </twinsen_printproductlabel>
+    </sections>
+</config>
+
+

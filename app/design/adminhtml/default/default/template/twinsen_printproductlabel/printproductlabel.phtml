@@ -1,0 +1,67 @@
+
+
+
+<?php
+$productId = Mage::registry('current_product')->getId();
+$code = Mage::helper('twinsen_printproductlabel')->getXml($productId);
+$code = str_replace("\r\n",'\\',$code);
+?>
+
+<script type="text/javascript">
+
+    function printLabel() {
+        try {
+            // open label
+            var labelXml = '<?php echo $code ?>';
+            var label = dymo.label.framework.openLabelXml(labelXml);
+
+            // set label text
+            //label.setObjectText("Text", text);
+
+// select printer to print on
+// for simplicity sake just use the first LabelWriter printer
+            var printers = dymo.label.framework.getPrinters();
+            if (printers.length == 0)
+                throw "No DYMO printers are installed. Install DYMO printers.";
+
+            var printerName = "";
+            for (var i = 0; i < printers.length; ++i) {
+                var printer = printers[i];
+                if (printer.printerType == "LabelWriterPrinter") {
+                    printerName = printer.name;
+                    break;
+                }
+            }
+
+            if (printerName == "")
+                throw "No LabelWriter printers found. Install LabelWriter printer";
+
+// finally print the label
+            label.print(printerName);
+        }
+        catch (e) {
+            alert(e.message || e);
+        }
+    }
+</script>
+
+<?php
+
+// Create Print Label Button
+echo Mage::getSingleton('core/layout')->createBlock('adminhtml/widget_button', 'printlabel')
+    ->setData(array(
+        'label' => Mage::helper('twinsen_printproductlabel')->__('Print Label'),
+        'onclick' => "printLabel();",
+        'class' => 'save'
+    ))->toHtml();
+// Create Download Button
+$url = $this->getUrl('*/printlabel_print/print', array('id' => $this->getProductId()));
+
+echo Mage::getSingleton('core/layout')->createBlock('adminhtml/widget_button', 'downloadlabel')
+    ->setData(array(
+        'label' => Mage::helper('twinsen_printproductlabel')->__('Download Label'),
+        'onclick' => 'setLocation(\'' . $url . '\')',
+        'class' => 'save'
+    ))->toHtml();
+?>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Twinsen_PrintProductLabel>
+            <version>1.0.0</version>
+        </Twinsen_PrintProductLabel>
+    </modules>
+    <global>
+        <models>
+            <twinsen_printproductlabel>
+                <class>Twinsen_PrintProductLabel_Model</class>
+                <resourceModel>twinsen_printproductlabel_resource</resourceModel>
+            </twinsen_printproductlabel>
+            <twinsen_printproductlabel_resource>
+                <class>Twinsen_PrintProductLabel_Model_Resource</class>
+            </twinsen_printproductlabel_resource>
+        </models>
+        <blocks>
+            <twinsen_printproductlabel>
+                <class>Twinsen_PrintProductLabel_Block</class>
+            </twinsen_printproductlabel>
+        </blocks>
+        <helpers>
+            <twinsen_printproductlabel>
+                <class>Twinsen_PrintProductLabel_Helper</class>
+            </twinsen_printproductlabel>
+        </helpers>
+    </global>
+    <adminhtml>
+        <events>
+            <controller_action_layout_render_before_adminhtml_catalog_product_edit>
+                <observers>
+                    <addbutton>
+                        <class>twinsen_printproductlabel/observer</class>
+                        <method>addButton</method>
+                    </addbutton>
+                </observers>
+            </controller_action_layout_render_before_adminhtml_catalog_product_edit>
+        </events>
+        <layout>
+            <updates>
+                <bar>
+                    <file>twinsen_printproductlabel.xml</file>
+                </bar>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Twinsen_PrintProductLabel before="Mage_Adminhtml">Twinsen_PrintProductLabel_Adminhtml</Twinsen_PrintProductLabel>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+</config>
