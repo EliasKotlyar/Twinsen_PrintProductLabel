@@ -1,0 +1,18 @@
+{
+  "name":"twinsen/printproductlabel",
+  "type":"magento-module",
+  "license":"OSL-3.0",
+  "homepage":"http://twinsen.de",
+  "description":"Print Product Label Extension",
+  "authors":[
+    {
+      "name":"Elias Kotlyar",
+      "email":"elias.kotlyar@gmail.com"
+    }
+  ],
+  "require":{
+    "magento-hackathon/magento-composer-installer":"*"
+  },
+  "require-dev":{
+  }
+}
